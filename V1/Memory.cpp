@@ -18,36 +18,37 @@ Memory::Memory(vector<int> input, int size)
 }
 
 
-
+// First-In-First-Out Algorithm
 void Memory::fifo() {
 
     // Iterating through the entire reference string of numbers
     for (int i = 0; i < reference.size(); i++) {
         cout << "Insert: " << reference[i] << endl;        //Debugging purposes
-
-        // Places first 3 values into page frame
-        if(frame.size() < frameSize && !isIn(reference[i])) {
-            push(reference[i]);
-        }
-        // Replaces values in the page frame based; uses i % 3 to determine the slot that will be replaced
-        else {
-            if (faults % 3 == 0 && !isIn(reference[i])) {
-                replace(0, reference[i]);
+        
+        // Checks frame for duplicate value
+        if(!isIn(reference[i])) {
+        
+            // Places first 3 values into page frame
+            if (frame.size() < frameSize) {
+                push(reference[i]);
             }
-            else if (faults % 3 == 1 && !isIn(reference[i])) {
-                replace(1, reference[i]);
-            }
-            else if (faults % 3 == 2 && !isIn(reference[i])) {
-                replace(2, reference[i]);
-            }
-        }
+            // Replaces values in the page frame based; uses i % 3 to determine the slot that will be replaced
+            else {
+                if (faults % 3 == 0) {
+                    replace(0, reference[i]);
+                }
+                else if (faults % 3 == 1) {
+                    replace(1, reference[i]);
+                }
+                else if (faults % 3 == 2) {
+                    replace(2, reference[i]);
+                }
+            } // eof if-else ladder
+        } // eof dupe value check
         print();
         cout << "Page faults: " << faults << endl;
-    }
-        
-    //cout << "Page faults: " << faults << endl;
-    // NOTE: && !isIn(reference[i]) : Checks for numbers already inside the frame and skips the number if true
-}
+    } // eof main fifo loop
+} // eof fifo
 
 
 void Memory::optimal() {
