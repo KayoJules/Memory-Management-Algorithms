@@ -1,7 +1,6 @@
 #include "Memory.h"
 
 // TODO:
-// Fix FIFO: currently fucks up when encountering a duplicate value; the modular % expression causes the duplicate value slot to be skipped
 // Optimal
 // LRU
 
@@ -32,13 +31,13 @@ void Memory::fifo() {
         }
         // Replaces values in the page frame based; uses i % 3 to determine the slot that will be replaced
         else {
-            if (i % 3 == 0 && !isIn(reference[i])) {
+            if (faults % 3 == 0 && !isIn(reference[i])) {
                 replace(0, reference[i]);
             }
-            else if (i % 3 == 1 && !isIn(reference[i])) {
+            else if (faults % 3 == 1 && !isIn(reference[i])) {
                 replace(1, reference[i]);
             }
-            else if (i % 3 == 2 && !isIn(reference[i])) {
+            else if (faults % 3 == 2 && !isIn(reference[i])) {
                 replace(2, reference[i]);
             }
         }
