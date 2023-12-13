@@ -1,12 +1,6 @@
 # Memory Management
 
 
-Version 2 <br>
-Added reset function to clean-up after performing algorithms <br>
-LRU Algorithm WIP - not working
-
-
-
 <h2>Memory Class Notes</h2>
 Memory class is intended to hold all functions and do all the processing for the FIFO Optimal and LRU algorithms.<br>
 
