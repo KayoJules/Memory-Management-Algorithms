@@ -1,5 +1,5 @@
-# CSC3391---Lab-2
-Memory Management
+# Memory Management
+
 
 Version 2 <br>
 Added reset function to clean-up after performing algorithms <br>
@@ -109,6 +109,6 @@ Example: `replace(1, 7)` will place the number 7 into the 2nd slot of the page `
 `void lru();` - Least Recently Used Algorithm<br><br>
 
 
-
+CSC3391
 
 
